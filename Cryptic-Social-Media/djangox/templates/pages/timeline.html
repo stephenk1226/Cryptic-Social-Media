@@ -1,0 +1,57 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+<style>
+
+.timeline-container{
+    text-align: center;
+}
+
+.posts{
+    border: 1px solid #0984e3;
+    height: 100px;
+    text-align: justify;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+ button {
+        background-color: #0984e3;
+        border: none;
+        color: white;
+        padding: 6px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 13px;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+h5{
+    text-align: justify;
+}
+.delete{
+    margin-top: 15px;
+}
+</style>
+
+    <div class = "timeline-container">
+        <h1> Timeline </h1>
+        {% for post in allPosts %}
+            <h6> {{ post.groupName }} </h6>
+            <h5 >{{ post.sender }} </h5>
+         <div class = "posts">
+            {{ post.information }}
+         </div>
+        {% endfor %}
+    </div>
+
+    <div class ="delete">
+        <h3>Delete all Posts</h3>
+        <form action="/deletePosts">
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+
+
+{% endblock %}
